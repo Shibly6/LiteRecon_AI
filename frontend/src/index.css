@@ -1,0 +1,248 @@
+:root {
+  --bg: #0f172a;
+  --panel: #1e293b;
+  --accent: #3b82f6;
+  --muted: #94a3b8;
+  --border: #334155;
+  --radius: 12px;
+  --gap: 18px;
+  --max-width: 1200px;
+}
+
+/* Simple full-page layout */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: #e2e8f0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Single centered container */
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.panel {
+  width: 100%;
+  max-width: var(--max-width);
+  background: var(--panel);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+  color: #e2e8f0;
+}
+
+h1 {
+  font-size: 24px;
+  margin: 0 0 24px 0;
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #0f172a;
+  color: #e2e8f0;
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: none;
+}
+
+.input:focus,
+.select:focus {
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.15);
+  border-color: var(--accent);
+}
+
+.spacer {
+  height: var(--gap);
+}
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.25);
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #e2e8f0;
+  border: 1px solid var(--border);
+}
+
+.btn-ghost:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+/* results area */
+.results {
+  margin-top: 24px;
+}
+
+.summary {
+  padding: 20px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #1e293b, #0f172a);
+  border: 1px solid var(--border);
+  color: #e2e8f0;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 56px;
+}
+
+.raw-toggle {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid var(--border);
+}
+
+.raw-label {
+  font-size: 13px;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.chev {
+  transition: transform .18s ease;
+  display: inline-block;
+}
+
+.raw-collapsed .chev {
+  transform: rotate(-90deg);
+}
+
+.raw-output {
+  margin-top: 10px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .28s ease, padding .18s ease;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #020617;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+  font-size: 12.5px;
+  color: #94a3b8;
+}
+
+.raw-output.open {
+  max-height: 400px;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+}
+
+.modal h2 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+  color: #f8fafc;
+}
+
+.modal p {
+  margin: 0 0 16px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.modal-buttons .btn {
+  width: auto;
+  flex: 1;
+}
+
+/* small helper */
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Grid layout for form */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    padding: 20px;
+  }
+
+  .container {
+    padding: 20px 10px;
+  }
+}
